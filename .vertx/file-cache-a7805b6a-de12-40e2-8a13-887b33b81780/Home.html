@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #chatList {
+            overflow-y: scroll;
+            height: 600px;
+            width: 74%;
+            float: left;
+            border-style: groove;
+        }
+        #userList {
+            border-style: groove;
+            overflow-y: scroll;
+            height: 600px;
+            width: 24%;
+        }
+        #input{
+            width: 90%;
+        }
+        #send{
+            width: 8.5%;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatList">
+        <p>Chat List</p>
+        <hr>
+    </div>
+    <div id="userList">
+        <p>User List</p>
+        <hr>
+    </div>
+    <input type="text" id="input"><button type="button" id="send">Send</button>
+    <script>
+        var socket = new WebSocket("ws://localhost:8088")
+
+        socket.onmessage = function(event{
+            console.log(event.data);
+        }
+
+        document.querySelector("#send").onclick = function() {
+            var text = document.querySelector("#input").value;
+            var input = document.getElementById("input");
+            input.value = "";
+            socket.send(text);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #chatList {
+            overflow-y: scroll;
+            height: 600px;
+            width: 74%;
+            float: left;
+            border-style: groove;
+        }
+        #userList {
+            border-style: groove;
+            overflow-y: scroll;
+            height: 600px;
+            width: 24%;
+        }
+        #input{
+            width: 90%;
+        }
+        #send{
+            width: 8.5%;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatList">
+        <p>Chat List</p>
+        <hr>
+    </div>
+    <div id="userList">
+        <p>User List</p>
+        <hr>
+    </div>
+    <input type="text" id="input"><button type="button" id="send">Send</button>
+    <script>
+        var socket = new WebSocket("ws://localhost:8088");
+
+        window.onload = function(){
+            socket.send('/getUsers');
+        }
+
+        socket.onmessage = function(ev){
+            if (ev.data instanceof Blob) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var received = reader.result;
+                    console.log('A : ' + received);
+                    messageHandler(received);
+                }
+                reader.readAsText(ev.data);
+            }
+        }
+
+        function messageHandler(request){
+            var userList = document.getElementById('userList');
+            var chatList = document.getElementById('chatList');
+            if(request.startsWith('/loggedIn')){
+                username = request.split(' ')[1];
+                var p = document.createElement('p');
+                p.innerHTML = username;
+                p.setAttribute('username', username);
+                userList.appendChild(p);
+            } else if(request.startsWith('/chat')) {
+                chatUsername = request.split(' ')[1];
+                chat = request.split(' ', 2)[2];
+                message = chatUsername + ": " + chat;
+                var p = document.createElement('p');
+                p.innerHTML = message;
+                chatList.appendChild(p);
+            } else {
+                message = request;
+                var p = document.createElement('p');
+                p.innerHTML = message;
+                chatList.appendChild(p);
+            }
+        }
+
+        document.querySelector("#send").onclick = function() {
+            var text = document.querySelector("#input").value;
+            var input = document.getElementById("input");
+            input.value = "";
+            socket.send(text);
+        }
+
+        document.getElementById('input').addEventListener('keydown', function(ev){
+            if (event.keyCode === 13){
+                document.getElementById('send').click();
+            }
+        })
+    </script>
+</body>
+</html>
