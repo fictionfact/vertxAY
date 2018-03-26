@@ -82,10 +82,6 @@
                     '@class':
                         'com.gigabyte.tugasakhir.vertx.packet.ChatMessage',
                     handler: chatMessage
-                }, {
-                    '@class':
-                        'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
-                    handler: whisperMessage
                 }
             ]
 
@@ -95,10 +91,6 @@
             else
                 // buka web developer tool web console
                 console.log(json)
-        }
-
-        function whisperMessage(json){
-            console.log(json);
         }
 
         function chatMessage(json){
@@ -121,7 +113,7 @@
         }
 
         function logoutNotif(json){
-            var username = json.user.username;
+            var username = json.username;
             var x = document.querySelectorAll('p[username]');
             console.log(x);
             for (var i = 0; i < x.length; i++){

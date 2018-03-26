@@ -44,10 +44,6 @@
             document.getElementById('input').focus();
         }
 
-        window.onunload = function(){
-            socket.send('/logout');
-        }
-
         socket.onmessage = function(ev){
             if (ev.data instanceof Blob) {
                 var reader = new FileReader();
@@ -82,10 +78,6 @@
                     '@class':
                         'com.gigabyte.tugasakhir.vertx.packet.ChatMessage',
                     handler: chatMessage
-                }, {
-                    '@class':
-                        'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
-                    handler: whisperMessage
                 }
             ]
 
@@ -95,10 +87,6 @@
             else
                 // buka web developer tool web console
                 console.log(json)
-        }
-
-        function whisperMessage(json){
-            console.log(json);
         }
 
         function chatMessage(json){
@@ -121,16 +109,7 @@
         }
 
         function logoutNotif(json){
-            var username = json.user.username;
-            var x = document.querySelectorAll('p[username]');
-            console.log(x);
-            for (var i = 0; i < x.length; i++){
-                console.log(x[i].getAttribute('username'));
-                console.log(username);
-                if(x[i].getAttribute('username') == username){
-                    x[i].remove();
-                }
-            }
+
         }
 
         function chatNotif(json){

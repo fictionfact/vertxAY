@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
@@ -43,14 +44,108 @@
             document.getElementById('input').focus();
         }
 
+        window.onunload = function(){
+            socket.send('/logout');
+        }
+
         socket.onmessage = function(ev){
             if (ev.data instanceof Blob) {
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var received = reader.result;
-                    messageHandler(received);
+                    var json = JSON.parse(reader.result)
+                    processJson(json)
                 }
                 reader.readAsText(ev.data);
+            }
+        }
+
+        function processJson(json) {
+            var clazz = json['@class']
+            handlers = [
+                {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.LoginNotification',
+                    handler: loginNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.LogoutNotification',
+                    handler: logoutNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.ChatNotification',
+                    handler: chatNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.UserList',
+                    handler: showUserList
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.ChatMessage',
+                    handler: chatMessage
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
+                    handler: whisperMessage
+                }
+            ]
+
+            var handler = handlers.find(function(x) {return x['@class'] === clazz})
+            if (handler !== undefined)
+                handler.handler(json)
+            else
+                // buka web developer tool web console
+                console.log(json)
+        }
+
+        function whisperMessage(json){
+            console.log(json);
+        }
+
+        function chatMessage(json){
+            console.log(json);
+            var sender = json.from;
+            var message = json.chatMessage;
+            var compiled = sender + ' : ' + json.chatMessage;
+
+            var p = document.createElement('p');
+            p.style.whiteSpace = 'pre';
+            p.innerHTML = compiled;
+            chatList.appendChild(p);
+        }
+
+        function loginNotif(json){
+            var p = document.createElement('p');
+            p.innerHTML = json.user.username;
+            p.setAttribute('username', json.user.username);
+            userList.appendChild(p);
+        }
+
+        function logoutNotif(json){
+            var username = json.user.username;
+            var x = document.querySelectorAll('p[username]');
+            console.log(x);
+            for (var i = 0; i < x.length; i++){
+                console.log(x[i].getAttribute('username'));
+                console.log(username);
+                if(x[i].getAttribute('username') == username){
+                    x[i].remove();
+                }
+            }
+        }
+
+        function chatNotif(json){
+            var p = document.createElement('p');
+            p.innerHTML = '<b>' + json.notification + '</b>';
+            p.style.color = '#ffbf11';
+            chatList.appendChild(p);
+        }
+
+        function showUserList(json){
+            for(var k in json.userList) {
+                var p = document.createElement('p');
+                p.innerHTML = k;
+                p.setAttribute('username', k);
+                userList.appendChild(p);
             }
         }
 

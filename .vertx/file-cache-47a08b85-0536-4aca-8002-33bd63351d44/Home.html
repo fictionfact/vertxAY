@@ -44,10 +44,6 @@
             document.getElementById('input').focus();
         }
 
-        window.onunload = function(){
-            socket.send('/logout');
-        }
-
         socket.onmessage = function(ev){
             if (ev.data instanceof Blob) {
                 var reader = new FileReader();
@@ -78,14 +74,6 @@
                     '@class':
                         'com.gigabyte.tugasakhir.vertx.packet.UserList',
                     handler: showUserList
-                }, {
-                    '@class':
-                        'com.gigabyte.tugasakhir.vertx.packet.ChatMessage',
-                    handler: chatMessage
-                }, {
-                    '@class':
-                        'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
-                    handler: whisperMessage
                 }
             ]
 
@@ -97,22 +85,6 @@
                 console.log(json)
         }
 
-        function whisperMessage(json){
-            console.log(json);
-        }
-
-        function chatMessage(json){
-            console.log(json);
-            var sender = json.from;
-            var message = json.chatMessage;
-            var compiled = sender + ' : ' + json.chatMessage;
-
-            var p = document.createElement('p');
-            p.style.whiteSpace = 'pre';
-            p.innerHTML = compiled;
-            chatList.appendChild(p);
-        }
-
         function loginNotif(json){
             var p = document.createElement('p');
             p.innerHTML = json.user.username;
@@ -121,16 +93,7 @@
         }
 
         function logoutNotif(json){
-            var username = json.user.username;
-            var x = document.querySelectorAll('p[username]');
-            console.log(x);
-            for (var i = 0; i < x.length; i++){
-                console.log(x[i].getAttribute('username'));
-                console.log(username);
-                if(x[i].getAttribute('username') == username){
-                    x[i].remove();
-                }
-            }
+
         }
 
         function chatNotif(json){
@@ -141,12 +104,9 @@
         }
 
         function showUserList(json){
-            for(var k in json.userList) {
-                var p = document.createElement('p');
-                p.innerHTML = k;
-                p.setAttribute('username', k);
-                userList.appendChild(p);
-            }
+            console.log(json);
+            var keys = [];
+            for(var k in json) keys.push(k);
         }
 
         function messageHandler(request){
