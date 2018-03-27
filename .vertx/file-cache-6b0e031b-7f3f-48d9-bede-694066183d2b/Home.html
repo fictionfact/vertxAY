@@ -40,9 +40,11 @@
         var socket = new WebSocket("ws://localhost:8080");
 
         window.onload = function(){
-            socket.onopen = function() {
+            var loaded = false;
+            while(loaded) {
                 socket.send('/getUsers');
                 document.getElementById('input').focus();
+                loaded = true;
             }
         }
 
@@ -100,15 +102,7 @@
         }
 
         function whisperMessage(json){
-            var sender = json.from;
-            var message = json.whisperMessage;
-            var compiled = sender + " (Whisper) : " + message;
-
-            var p = document.createElement('p');
-            p.style.whiteSpace = 'pre';
-            p.style.color = 'blue';
-            p.innerHTML = compiled;
-            chatList.appendChild(p);
+            console.log(json);
         }
 
         function chatMessage(json){

@@ -100,15 +100,7 @@
         }
 
         function whisperMessage(json){
-            var sender = json.from;
-            var message = json.whisperMessage;
-            var compiled = sender + " (Whisper) : " + message;
-
-            var p = document.createElement('p');
-            p.style.whiteSpace = 'pre';
-            p.style.color = 'blue';
-            p.innerHTML = compiled;
-            chatList.appendChild(p);
+            console.log(json);
         }
 
         function chatMessage(json){

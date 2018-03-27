@@ -40,10 +40,8 @@
         var socket = new WebSocket("ws://localhost:8080");
 
         window.onload = function(){
-            socket.onopen = function() {
-                socket.send('/getUsers');
-                document.getElementById('input').focus();
-            }
+            socket.send('/getUsers');
+            document.getElementById('input').focus();
         }
 
         window.onunload = function(){
@@ -100,22 +98,14 @@
         }
 
         function whisperMessage(json){
-            var sender = json.from;
-            var message = json.whisperMessage;
-            var compiled = sender + " (Whisper) : " + message;
-
-            var p = document.createElement('p');
-            p.style.whiteSpace = 'pre';
-            p.style.color = 'blue';
-            p.innerHTML = compiled;
-            chatList.appendChild(p);
+            console.log(json);
         }
 
         function chatMessage(json){
             console.log(json);
             var sender = json.from;
             var message = json.chatMessage;
-            var compiled = sender + ' : ' + message;
+            var compiled = sender + ' : ' + json.chatMessage;
 
             var p = document.createElement('p');
             p.style.whiteSpace = 'pre';
@@ -131,7 +121,6 @@
         }
 
         function logoutNotif(json){
-            console.log(json);
             var username = json.user.username;
             var x = document.querySelectorAll('p[username]');
             console.log(x);

@@ -14,7 +14,7 @@ import io.vertx.core.shareddata.LocalMap;
     - test after logout message behaviour
  */
 
-public class ConnectionHandler {
+public class  ConnectionHandler {
     private final Vertx vertx;
     private final ServerWebSocket socket;
     private User user;
@@ -48,7 +48,6 @@ public class ConnectionHandler {
                 String name = request.split(" ")[1];
                 if (this.user == null) {
                     login(name);
-                    sendToClient(new ChatNotification("Your username is " + name + ", now you can start chatting!"));
                 }
                 else
                     sendToClient(new ChatNotification("You already set your username."));
@@ -73,6 +72,8 @@ public class ConnectionHandler {
         sendToClient(new ChatNotification("You have left the chat room."));
         vertx.eventBus().consumer("user/" + this.user.getUsername()).unregister();
         vertx.eventBus().consumer("broadcast").unregister();
+        LocalMap<String, User> map = vertx.sharedData().getLocalMap("users");
+        map.remove(this.user.getUsername());
         broadcastMessage(new LogoutNotification(this.user));
         this.user = null;
     }
@@ -101,6 +102,7 @@ public class ConnectionHandler {
 
             // broadcast login
             broadcastMessage(new LoginNotification(this.user));
+            sendToClient(new ChatNotification("Your username is " + this.user.getUsername() + ", now you can start chatting!"));
         } else {
             sendToClient(new ChatNotification("Username already taken, please input another username"));
         }
@@ -111,6 +113,7 @@ public class ConnectionHandler {
     }
 
     private void whisperMessage(Message message, String recipient){
+        System.out.println(message);
         vertx.eventBus().publish("user/" + recipient, JsonObject.mapFrom(message));
     }
 }

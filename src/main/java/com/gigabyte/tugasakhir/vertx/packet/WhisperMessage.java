@@ -4,23 +4,27 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WhisperMessage extends Message {
-    private final String chatMessage;
+    private final String whisperMessage;
     private final String from;
 
     @JsonCreator
-    public WhisperMessage(@JsonProperty("from") String from, @JsonProperty("chatMessage") String chatMessage){
-        this.chatMessage = chatMessage;
+    public WhisperMessage(@JsonProperty("from") String from, @JsonProperty("whisperMessage") String whisperMessage){
+        this.whisperMessage = whisperMessage;
         this.from = from;
     }
 
-    public String getChatMessage() {
-        return chatMessage;
+    public String getWhisperMessage() {
+        return whisperMessage;
+    }
+
+    public String getFrom() {
+        return from;
     }
 
     @Override
     public String toString() {
         return "WhisperMessage{" +
-                "chatMessage='" + chatMessage + '\'' +
+                "whisperMessage='" + whisperMessage + '\'' +
                 ", from='" + from + '\'' +
                 '}';
     }

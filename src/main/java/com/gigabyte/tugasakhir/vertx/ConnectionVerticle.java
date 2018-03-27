@@ -23,7 +23,7 @@ public class ConnectionVerticle extends AbstractVerticle {
         });
 
         server.requestHandler(router::accept);
-        server.listen(8088);
+        server.listen(8080);
     }
 
     private String processAnswer(AsyncResult<Message<Object>> reply){

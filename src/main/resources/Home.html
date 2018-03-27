@@ -37,11 +37,13 @@
     </div>
     <input type="text" id="input"><button type="button" id="send">Send</button>
     <script>
-        var socket = new WebSocket("ws://localhost:8088");
+        var socket = new WebSocket("ws://localhost:8080");
 
         window.onload = function(){
-            socket.send('/getUsers');
-            document.getElementById('input').focus();
+            socket.onopen = function() {
+                socket.send('/getUsers');
+                document.getElementById('input').focus();
+            }
         }
 
         window.onunload = function(){
@@ -98,14 +100,22 @@
         }
 
         function whisperMessage(json){
-            console.log(json);
+            var sender = json.from;
+            var message = json.whisperMessage;
+            var compiled = sender + " (Whisper) : " + message;
+
+            var p = document.createElement('p');
+            p.style.whiteSpace = 'pre';
+            p.style.color = 'blue';
+            p.innerHTML = compiled;
+            chatList.appendChild(p);
         }
 
         function chatMessage(json){
             console.log(json);
             var sender = json.from;
             var message = json.chatMessage;
-            var compiled = sender + ' : ' + json.chatMessage;
+            var compiled = sender + ' : ' + message;
 
             var p = document.createElement('p');
             p.style.whiteSpace = 'pre';
@@ -121,6 +131,7 @@
         }
 
         function logoutNotif(json){
+            console.log(json);
             var username = json.user.username;
             var x = document.querySelectorAll('p[username]');
             console.log(x);
@@ -134,6 +145,7 @@
         }
 
         function chatNotif(json){
+            console.log(json);
             var p = document.createElement('p');
             p.innerHTML = '<b>' + json.notification + '</b>';
             p.style.color = '#ffbf11';
