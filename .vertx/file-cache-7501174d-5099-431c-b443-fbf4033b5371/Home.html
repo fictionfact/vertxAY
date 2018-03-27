@@ -96,6 +96,10 @@
                     '@class':
                         'com.gigabyte.tugasakhir.vertx.packet.SendWhisper',
                     handler: sendWhisper
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.IsTheUser',
+                    handler: setUserColor
                 }
             ]
             var handler = handlers.find(function(x) {return x['@class'] === clazz})
@@ -104,6 +108,19 @@
             else
                 // buka web developer tool web console
                 console.log(json)
+        }
+
+        function setUserColor(json){
+            console.log(json);
+            var username = json.user.username;
+            var x = document.querySelectorAll('p[username]');
+            for (var i = 0; i < x.length; i++){
+                console.log(x[i].getAttribute('username'));
+                console.log(username);
+                if(x[i].getAttribute('username') == username){
+                    x[i].style.color = 'green';
+                }
+            }
         }
 
         function sendWhisper(json){

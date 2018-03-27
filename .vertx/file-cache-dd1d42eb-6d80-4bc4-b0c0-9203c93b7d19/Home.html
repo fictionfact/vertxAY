@@ -150,8 +150,10 @@
         }
 
         function logoutNotif(json){
+            console.log(json);
             var username = json.user.username;
             var x = document.querySelectorAll('p[username]');
+            console.log(x);
             for (var i = 0; i < x.length; i++){
                 console.log(x[i].getAttribute('username'));
                 console.log(username);

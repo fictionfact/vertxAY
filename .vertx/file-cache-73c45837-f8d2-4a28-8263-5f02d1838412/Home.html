@@ -39,9 +39,6 @@
     <script>
         var socket = new WebSocket("ws://localhost:8080");
 
-        const userList = document.getElementById('userList');
-        const chatList = document.getElementById('chatList');
-
         window.onload = function(){
             socket.onopen = function() {
                 socket.send('/getUsers');
@@ -57,9 +54,8 @@
             if (ev.data instanceof Blob) {
                 var reader = new FileReader();
                 reader.onload = function() {
-                    var json = JSON.parse(reader.result);
-                    processJson(json);
-
+                    var json = JSON.parse(reader.result)
+                    processJson(json)
                 }
                 reader.readAsText(ev.data);
             }
@@ -92,30 +88,15 @@
                     '@class':
                         'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
                     handler: whisperMessage
-                }, {
-                    '@class':
-                        'com.gigabyte.tugasakhir.vertx.packet.SendWhisper',
-                    handler: sendWhisper
                 }
             ]
+
             var handler = handlers.find(function(x) {return x['@class'] === clazz})
             if (handler !== undefined)
                 handler.handler(json)
             else
                 // buka web developer tool web console
                 console.log(json)
-        }
-
-        function sendWhisper(json){
-            var recipient = json.to;
-            var message = json.whisperMessage;
-            var compiled = "(To : " + recipient + ") : " + message;
-
-            var p = document.createElement('p');
-            p.style.whiteSpace = 'pre';
-            p.style.color = 'blue';
-            p.innerHTML = compiled;
-            chatList.appendChild(p);
         }
 
         function whisperMessage(json){
@@ -150,8 +131,10 @@
         }
 
         function logoutNotif(json){
+            console.log(json);
             var username = json.user.username;
             var x = document.querySelectorAll('p[username]');
+            console.log(x);
             for (var i = 0; i < x.length; i++){
                 console.log(x[i].getAttribute('username'));
                 console.log(username);
@@ -175,6 +158,36 @@
                 p.innerHTML = k;
                 p.setAttribute('username', k);
                 userList.appendChild(p);
+            }
+        }
+
+        function messageHandler(request){
+            var userList = document.getElementById('userList');
+            var chatList = document.getElementById('chatList');
+            if(request.startsWith('/loggedIn')){
+                username = request.split(' ')[1];
+                var p = document.createElement('p');
+                p.innerHTML = username;
+                p.setAttribute('username', username);
+                userList.appendChild(p);
+            } else if(request.startsWith('/chat')) {
+                arr = request.split(' ');
+                result = arr.splice(0, 2);
+                result.push(arr.join(' '));
+                console.log(result);
+
+                chatUsername = result[1];
+                chat = result[2];
+                message = chatUsername + ": " + chat;
+                var p = document.createElement('p');
+                p.innerHTML = message;
+                chatList.appendChild(p);
+            } else {
+                message = request;
+                var p = document.createElement('p');
+                p.innerHTML = '<b>' + message + '</b>';
+                p.style.color = '#ffbf11';
+                chatList.appendChild(p);
             }
         }
 
