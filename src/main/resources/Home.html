@@ -2,12 +2,21 @@
 <html lang="en">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+    	.main{
+    		height: 80%;
+    		width:72%;
+    		position: absolute;
+			top: 10%;
+			left: 15%;
+    	}
         #chatList {
             overflow-y: scroll;
-            height: 600px;
+            height: 100%;
             width: 74%;
             float: left;
             border-style: groove;
@@ -15,8 +24,8 @@
         #userList {
             border-style: groove;
             overflow-y: scroll;
-            height: 600px;
-            width: 24%;
+            height: 100%;
+            width: 26%;
         }
         #input{
             width: 90%;
@@ -24,18 +33,80 @@
         #send{
             width: 8.5%;
         }
+        html {
+		  background: lightgrey;
+		  height: 100%;
+		  overflow: scroll;
+		}
+		body {
+		  width: 100%;
+		  height: 100%;
+		  background-image: url("http://laoblogger.com/images/clouds-clipart-iphone-9.jpg");
+		  background-position: 0px 0px;
+		  background-repeat: repeat-x;
+		  animation: animatedBackground 30s linear infinite;
+		  margin: 0 auto;
+		  padding: 3em;
+		  font: 100%/1.4 serif;
+		  border: 1px solid rgba(0,0,0,0.25)
+		}
+		@keyframes animatedBackground {
+			from { background-position: 0 0; }
+			to { background-position: 100% 0; }
+		}
+		h1,
+		h6 {
+			  grid-area: center;
+			  text-align: center;
+			  font-size: 18px;
+			  font-family: 'Gingham Variable', sans-serif;
+			  font-variation-settings: "wght" 123, "wdth" 245;
+			  transition: font-variation-settings 0.5s ease-out;
+			  
+			  &:hover {
+			    font-variation-settings: "wght" 980, "wdth" 897;
+			  }
+		}
+		p {
+		  margin: 0 0 1.5em;
+		}
+		#send {
+			
+			width: 10%;
+			height: 7.5%;
+		}
+		input[type=text]{
+		    width:70%;
+		    border:2px solid #aaa;
+		    border-radius:4px;
+		    margin:8px 0;
+		    outline:none;
+		    font-size: 14	px;
+		    padding:8px;
+		    box-sizing:border-box;
+		    transition:.3s;
+		  }
+		  
+		  input[type=text]:focus{
+		    border-color:dodgerBlue;
+		    box-shadow:0 0 8px 0 dodgerBlue;
+		  }
     </style>
 </head>
 <body>
-    <div id="chatList">
-        <p>Chat List</p>
+	<div class="main"> 
+		<div id="chatList">
+        <h1>Chat List</h1>
         <hr>
     </div>
     <div id="userList">
-        <p>User List</p>
+        <h1>User List</h1>
         <hr>
     </div>
-    <input type="text" id="input"><button type="button" id="send">Send</button>
+    <span>
+    <input type="text" id="input" placeholder="input your message"><button type="button" id="send" class="btn btn-success">Send</button>
+	</div>
+    
     <script>
         var socket = new WebSocket("ws://localhost:8080");
 
