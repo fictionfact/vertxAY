@@ -113,7 +113,7 @@ public class  ConnectionHandler {
             subscribeTo("user/" + this.user.getUsername());
 
             // broadcast login
-            broadcastMessage(new LoginNotification(this.user, socket));
+            broadcastMessage(new LoginNotification(this.user));
             sendToClient(new ChatNotification("Your username is " + this.user.getUsername() + ", now you can start chatting!"));
         } else {
             sendToClient(new ChatNotification("Username already taken, please input another username"));

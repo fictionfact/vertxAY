@@ -112,8 +112,8 @@
         const userList = document.getElementById('userList');
         const chatList = document.getElementById('chatList');
 
-        socket.onopen = function() {
-            window.onload = function(){
+        window.onload = function(){
+            socket.onopen = function() {
                 socket.send('/getUsers');
                 document.getElementById('input').focus();
             }

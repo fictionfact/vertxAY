@@ -96,15 +96,16 @@
 <body>
 	<div class="main"> 
 		<div id="chatList">
-            <h1>Chat List</h1>
-            <hr>
+        <h1>Chat List</h1>
+        <hr>
         </div>
-        <div id="userList">
-            <h1>User List</h1>
-            <hr>
-        </div>
+    </div>
+    <div id="userList">
+        <h1>User List</h1>
+        <hr>
+    </div>
         <input type="text" id="input" placeholder="input your message"><button type="button" id="send" class="btn btn-success">Send</button>
-	</div>
+	
     
     <script>
         var socket = new WebSocket("ws://localhost:8088");
@@ -112,8 +113,8 @@
         const userList = document.getElementById('userList');
         const chatList = document.getElementById('chatList');
 
-        socket.onopen = function() {
-            window.onload = function(){
+        window.onload = function(){
+            socket.onopen = function() {
                 socket.send('/getUsers');
                 document.getElementById('input').focus();
             }
