@@ -3,7 +3,7 @@ package com.gigabyte.tugasakhir.vertx.packet;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SendWhisper extends Message {
+public class SendWhisper extends MyMessage {
     private final String to;
     private final String whisperMessage;
 

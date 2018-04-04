@@ -7,6 +7,7 @@ import io.vertx.core.buffer.Buffer;
 import io.vertx.core.http.ServerWebSocket;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.shareddata.LocalMap;
+import io.vertx.core.eventbus.Message;
 
 /*
     to be done:
@@ -79,6 +80,8 @@ public class  ConnectionHandler {
             }
         } else {
             broadcastMessage(new ChatMessage(this.user.getUsername(), request));
+//            Message<String> test = this.user.getUsername();
+            vertx.eventBus().send("answer", request);
         }
     }
 
@@ -92,11 +95,11 @@ public class  ConnectionHandler {
 
     private void subscribeTo(String address) {
         vertx.eventBus().consumer(address).handler(objectMessage -> {
-            sendToClient(JsonObject.mapFrom(objectMessage.body()).mapTo(Message.class));
+            sendToClient(JsonObject.mapFrom(objectMessage.body()).mapTo(MyMessage.class));
         });
     }
 
-    private void sendToClient(Message message) {
+    private void sendToClient(MyMessage message) {
         socket.write(JsonObject.mapFrom(message).toBuffer());
     }
 
@@ -120,11 +123,11 @@ public class  ConnectionHandler {
         }
     }
 
-    private void broadcastMessage(Message message) {
+    private void broadcastMessage(MyMessage message) {
         vertx.eventBus().publish("broadcast", JsonObject.mapFrom(message));
     }
 
-    private void whisperMessage(Message message, String recipient){
+    private void whisperMessage(MyMessage message, String recipient){
         System.out.println(message);
         vertx.eventBus().publish("user/" + recipient, JsonObject.mapFrom(message));
     }

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gigabyte.tugasakhir.vertx.model.User;
 import io.vertx.core.http.ServerWebSocket;
 
-public class LoginNotification extends Message {
+public class LoginNotification extends MyMessage {
     private final User user;
 
     @JsonCreator

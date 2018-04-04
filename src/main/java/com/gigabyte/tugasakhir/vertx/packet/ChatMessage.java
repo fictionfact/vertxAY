@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
-public class ChatMessage extends Message {
+public class ChatMessage extends MyMessage {
     private final String chatMessage;
     private final String from;
 

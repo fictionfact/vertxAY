@@ -7,5 +7,7 @@ public class Main {
         Vertx vertx = Vertx.vertx();
 
         vertx.deployVerticle(new ConnectionVerticle());
+//        vertx.deployVerticle(new BotHandler());
+        vertx.deployVerticle(new BotVerticle());
     }
 }

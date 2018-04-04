@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gigabyte.tugasakhir.vertx.model.User;
 import io.vertx.core.shareddata.LocalMap;
 
-public class UserList extends Message {
+public class UserList extends MyMessage {
     private final LocalMap<String, User> userList;
     @JsonCreator
     public UserList(@JsonProperty("user") LocalMap<String, User> userList){

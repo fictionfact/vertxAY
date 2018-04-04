@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gigabyte.tugasakhir.vertx.model.User;
 
-public class LogoutNotification extends Message {
+public class LogoutNotification extends MyMessage {
     private final User user;
 
     @JsonCreator

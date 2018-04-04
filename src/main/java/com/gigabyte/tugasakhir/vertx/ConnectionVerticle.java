@@ -25,16 +25,4 @@ public class ConnectionVerticle extends AbstractVerticle {
         server.requestHandler(router::accept);
         server.listen(8088);
     }
-
-    private String processAnswer(AsyncResult<Message<Object>> reply){
-        if(reply.succeeded()){
-//            Answer a = JsonObject.mapFrom(reply.result().body()).mapTo(Answer.class);
-//            String answer = a.getId() + " : " + a.getAnswers().stream().map(x -> x.toString()).collect(Collectors.joining(","));
-//            return answer;
-            String answer = (String) reply.result().body();
-            return answer.toString();
-        } else {
-            return "Error getting result";
-        }
-    }
 }
