@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta charset="UTF-8">
-    <title>AY Messenger</title>
+    <title>Title</title>
     <style>
     	.main{
     		height: 80%;
@@ -21,15 +21,11 @@
             float: left;
             border-style: groove;
         }
-        #userList{
+        #userList {
             border-style: groove;
             overflow-y: scroll;
             height: 100%;
             width: 26%;
-            color : black;
-            font-family: sans-serif;
-            font-size: 18px;
-            font-weight: bold;
         }
         #input{
             width: 90%;
@@ -66,14 +62,19 @@
 			  font-family: 'Gingham Variable', sans-serif;
 			  font-variation-settings: "wght" 123, "wdth" 245;
 			  transition: font-variation-settings 0.5s ease-out;
+			  
+			  &:hover {
+			    font-variation-settings: "wght" 980, "wdth" 897;
+			  }
 		}
 		p {
 		  margin: 0 0 1.5em;
           font-family: sans-serif;
 		}
 		#send {
+			
 			width: 10%;
-			height: 9%;
+			height: 7.5%;
 		}
 		input[type=text]{
 		    width:70%;
@@ -81,7 +82,7 @@
 		    border-radius:4px;
 		    margin:8px 0;
 		    outline:none;
-		    font-size: 16px;
+		    font-size: 14	px;
 		    padding:8px;
 		    box-sizing:border-box;
 		    transition:.3s;
@@ -96,15 +97,14 @@
 <body>
 	<div class="main"> 
 		<div id="chatList">
-            <h1 style="font-weight: bold">Chat List</h1>
+            <h1>Chat List</h1>
             <hr>
         </div>
         <div id="userList">
-            <h1 style="font-weight: bold">User List</h1>
+            <h1>User List</h1>
             <hr>
         </div>
-        <input type="text" id="input" placeholder="input your message">
-        <button type="button" id="send"><i class="fa fa-location-arrow"></i></button>
+        <input type="text" id="input" placeholder="input your message"><button type="button" id="send" class="btn btn-success">Send</button>
 	</div>
     
     <script>
@@ -251,6 +251,10 @@
                 var p = document.createElement('p');
                 p.innerHTML = k;
                 p.setAttribute('username', k);
+                p.style.color = '#FFFFFF';
+                p.style.fontSize = '18px';
+                P.style.fontStyle = 'bold';
+                p.style.backgroundColor = '#1496BB';
                 userList.appendChild(p);
             }
         }

@@ -66,6 +66,10 @@
 			  font-family: 'Gingham Variable', sans-serif;
 			  font-variation-settings: "wght" 123, "wdth" 245;
 			  transition: font-variation-settings 0.5s ease-out;
+			  
+			  &:hover {
+			    font-variation-settings: "wght" 980, "wdth" 897;
+			  }
 		}
 		p {
 		  margin: 0 0 1.5em;
@@ -74,6 +78,8 @@
 		#send {
 			width: 10%;
 			height: 9%;
+            margin:8px 0;
+            padding:8px;
 		}
 		input[type=text]{
 		    width:70%;
@@ -104,7 +110,7 @@
             <hr>
         </div>
         <input type="text" id="input" placeholder="input your message">
-        <button type="button" id="send"><i class="fa fa-location-arrow"></i></button>
+        <button type="button" id="send" class="btn btn-success"><i class="fa fa-info-circle">Send</i></button>
 	</div>
     
     <script>
