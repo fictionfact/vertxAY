@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <title>AY Messenger</title>
+    <style>
+    	.main{
+    		height: 80%;
+    		width:72%;
+    		position: absolute;
+			top: 10%;
+			left: 15%;
+    	}
+        #chatList {
+            overflow-y: scroll;
+            height: 100%;
+            width: 74%;
+            float: left;
+            border-style: groove;
+        }
+        #userList{
+            border-style: groove;
+            overflow-y: scroll;
+            height: 100%;
+            width: 26%;
+            color : black;
+            font-family: sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        #input{
+            width: 90%;
+        }
+        #send{
+            width: 10%;
+        }
+        html {
+		  background: lightgrey;
+		  height: 100%;
+		  overflow: scroll;
+		}
+		body {
+		  width: 100%;
+		  height: 100%;
+		  background-image: url("http://laoblogger.com/images/clouds-clipart-iphone-9.jpg");
+		  background-position: 0px 0px;
+		  background-repeat: repeat-x;
+		  animation: animatedBackground 30s linear infinite;
+		  margin: 0 auto;
+		  padding: 3em;
+		  font: 100%/1.4 serif;
+		  border: 1px solid rgba(0,0,0,0.25)
+		}
+		@keyframes animatedBackground {
+			from { background-position: 0 0; }
+			to { background-position: 100% 0; }
+		}
+		h1,
+		h6 {
+			  grid-area: center;
+			  text-align: center;
+			  font-size: 18px;
+			  font-family: 'Gingham Variable', sans-serif;
+			  font-variation-settings: "wght" 123, "wdth" 245;
+			  transition: font-variation-settings 0.5s ease-out;
+
+			  &:hover {
+			    font-variation-settings: "wght" 980, "wdth" 897;
+			  }
+		}
+		p {
+		  margin: 0 0 1.5em;
+          font-family: sans-serif;
+		}
+        #send:active{
+            top:0.3em;
+        }
+		#send {
+            /*display:inline-block;*/
+            padding: 8px;
+            /*margin:0 0.3em 0.3em 0;*/
+            /*border-radius:0.15em;*/
+            box-sizing: border-box;
+            text-decoration:none;
+            font-family:'Roboto',sans-serif;
+            text-transform:uppercase;
+            font-weight:400;
+            color:#FFFFFF;
+            background-color:#3369ff;
+            /*box-shadow:inset 0 -0.6em 0 -0.35em rgba(0,0,0,0.17);*/
+            text-align:center;
+            /*position:relative;*/
+			width: 9%;
+			height: 8.5%;
+		}
+
+		input[type=text]{
+		    width:70%;
+		    border:2px solid #aaa;
+		    border-radius:4px;
+		    /*margin:8px 0;*/
+		    outline:none;
+		    font-size: 16px;
+		    padding:8px;
+		    box-sizing:border-box;
+		    transition:.3s;
+		  }
+		  
+		  input[type=text]:focus{
+		    border-color:dodgerBlue;
+		    box-shadow:0 0 8px 0 dodgerBlue;
+		  }
+    </style>
+</head>
+<body>
+	<div class="main"> 
+		<div id="chatList">
+            <h1 style="font-weight: bold">Chat List</h1>
+            <hr>
+        </div>
+        <div id="userList">
+            <h1 style="font-weight: bold">User List</h1>
+            <hr>
+        </div>
+        <input type="text" id="input" placeholder="input your message"><button type="button" id="send"><i class="fa fa-plane"></i></button>
+	</div>
+    
+    <script>
+        var socket = new WebSocket("ws://localhost:8088");
+
+        const userList = document.getElementById('userList');
+        const chatList = document.getElementById('chatList');
+
+        socket.onopen = function() {
+            window.onload = function(){
+                socket.send('/getUsers');
+                document.getElementById('input').focus();
+            }
+        }
+
+        window.onunload = function(){
+            socket.send('/logout');
+        }
+
+        socket.onmessage = function(ev){
+            if (ev.data instanceof Blob) {
+                var reader = new FileReader();
+                reader.onload = function() {
+                    var json = JSON.parse(reader.result);
+                    processJson(json);
+
+                }
+                reader.readAsText(ev.data);
+            }
+        }
+
+        function processJson(json) {
+            var clazz = json['@class']
+            handlers = [
+                {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.LoginNotification',
+                    handler: loginNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.LogoutNotification',
+                    handler: logoutNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.ChatNotification',
+                    handler: chatNotif
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.UserList',
+                    handler: showUserList
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.ChatMessage',
+                    handler: chatMessage
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.WhisperMessage',
+                    handler: whisperMessage
+                }, {
+                    '@class':
+                        'com.gigabyte.tugasakhir.vertx.packet.SendWhisper',
+                    handler: sendWhisper
+                }
+            ]
+            var handler = handlers.find(function(x) {return x['@class'] === clazz})
+            if (handler !== undefined)
+                handler.handler(json)
+            else
+                // buka web developer tool web console
+                console.log(json)
+        }
+
+        function sendWhisper(json){
+            var recipient = json.to;
+            var message = json.whisperMessage;
+            var compiled = "(To : " + recipient + ") : " + message;
+
+            var p = document.createElement('p');
+            p.style.whiteSpace = 'pre';
+            p.style.color = '#FFFFFF';
+            p.style.backgroundColor = '#3C6478';
+            p.style.fontSize = '18px';
+            p.innerHTML = compiled;
+            chatList.appendChild(p);
+        }
+
+        function whisperMessage(json){
+            var sender = json.from;
+            var message = json.whisperMessage;
+            var compiled = sender + " (Whisper) : " + message;
+            var p = document.createElement('p');
+            p.style.whiteSpace = 'pre';
+            p.style.color = '#FFFFFF';
+            p.style.fontSize = '18px';
+            p.style.backgroundColor = '#3C6478';
+            p.innerHTML = compiled;
+            chatList.appendChild(p);
+        }
+
+        function chatMessage(json){
+            console.log(json);
+            var sender = json.from;
+            var message = json.chatMessage;
+            var compiled = sender + ' : ' + message;
+
+            var p = document.createElement('p');
+            p.style.whiteSpace = 'pre';
+            p.style.fontSize = '18px';
+            p.innerHTML = compiled;
+            chatList.appendChild(p);
+        }
+
+        function loginNotif(json){
+            var p = document.createElement('p');
+            p.innerHTML = json.user.username;
+            p.setAttribute('username', json.user.username);
+            p.style.fontSize = '18px';
+        }
+
+        function logoutNotif(json){
+            var username = json.user.username;
+            var x = document.querySelectorAll('p[username]');
+            for (var i = 0; i < x.length; i++){
+                console.log(x[i].getAttribute('username'));
+                console.log(username);
+                if(x[i].getAttribute('username') == username){
+                    x[i].remove();
+                }
+            }
+        }
+
+        function chatNotif(json){
+            console.log(json);
+            var p = document.createElement('p');
+            p.innerHTML = '<b>' + json.notification + '</b>';
+            p.style.color = '#ff6e00';
+            p.style.fontSize = '18px';
+            console.log(chatList.scrollTop);
+            console.log(chatList.scrollHeight);
+            console.log(chatList.height);
+            if (chatList.scrollTop == chatList.scrollHeight){
+                console.log('masuk kok');
+                chatList.appendChild(p);
+                chatList.scrollTop = chatList.scrollHeight;
+            } else {
+                chatList.appendChild(p);
+            }
+        }
+
+        function showUserList(json){
+            for(var k in json.userList) {
+                var p = document.createElement('p');
+                p.innerHTML = k;
+                p.setAttribute('username', k);
+                userList.appendChild(p);
+            }
+        }
+
+        document.querySelector("#send").onclick = function() {
+            var text = document.querySelector("#input").value;
+            var input = document.getElementById("input");
+            input.value = "";
+            socket.send(text);
+            chatList.scrollTop = chatList.scrollHeight;
+        }
+
+        document.getElementById('input').addEventListener('keydown', function(ev){
+            if (event.keyCode === 13){
+                document.getElementById('send').click();
+            }
+        })
+    </script>
+</body>
+</html>

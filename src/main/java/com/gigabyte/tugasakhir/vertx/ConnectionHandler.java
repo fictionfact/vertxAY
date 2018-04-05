@@ -1,13 +1,15 @@
 package com.gigabyte.tugasakhir.vertx;
 
+import com.gigabyte.tugasakhir.vertx.codec.userMessageCodec;
 import com.gigabyte.tugasakhir.vertx.model.User;
 import com.gigabyte.tugasakhir.vertx.packet.*;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
+import io.vertx.core.eventbus.MessageCodec;
+import io.vertx.core.eventbus.DeliveryOptions;
 import io.vertx.core.http.ServerWebSocket;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.shareddata.LocalMap;
-import io.vertx.core.eventbus.Message;
 
 /*
     to be done:
@@ -19,10 +21,21 @@ public class  ConnectionHandler {
     private final Vertx vertx;
     private final ServerWebSocket socket;
     private User user;
+    private DeliveryOptions options;
     public ConnectionHandler(Vertx vertx, ServerWebSocket socket) {
         this.vertx = vertx;
         this.socket = socket;
         this.user = null;
+
+        MessageCodec myCodec = new userMessageCodec();
+
+        options = new DeliveryOptions().setCodecName(myCodec.name());
+
+        try {
+            vertx.eventBus().registerCodec(myCodec);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         // read message from network
         this.socket.handler(this::receiveMessage);
@@ -37,13 +50,13 @@ public class  ConnectionHandler {
     private void receiveMessage(Buffer buffer) {
         String request = String.valueOf(buffer);
         if (request.replaceAll("\\s+", "").equals("")){
-            sendToClient(new ChatNotification("Please write something before sending."));
+//            sendToClient(new ChatNotification("Please write something before sending."));
         } else if (request.equals("/getUsers")){
             LocalMap<String, User> map = vertx.sharedData().getLocalMap("users");
             sendToClient(new UserList(map));
             subscribeTo("broadcast");
-            sendToClient(new ChatNotification("Welcome to the chat room! Before you start chatting," +
-                    " please input your username by typing '/username (space) (your username)'"));
+            sendToClient(new ChatNotification("Selamat datang! Sebelum anda memulai chatting," +
+                    " silakan menginput username anda dengan mengetik '/username (spasi) (username anda)'"));
         } else if (request.toLowerCase().startsWith("/username")) {
             if (request.split(" ").length == 2 && !request.split(" ", 2)[1].contains(" ")) {
                 String name = request.split(" ")[1];
@@ -51,12 +64,15 @@ public class  ConnectionHandler {
                     login(name);
                 }
                 else
-                    sendToClient(new ChatNotification("You already set your username."));
+                    sendToClient(new ChatNotification("Anda telah memiliki username."));
             } else if (request.split(" ").length == 1){
-                sendToClient(new ChatNotification("Please input your username after '/username'."));
+                sendToClient(new ChatNotification("Silakan menginput username anda setelah '/username'."));
             } else {
-                sendToClient(new ChatNotification("Username cannot include spaces."));
+                sendToClient(new ChatNotification("Username tidak boleh memiliki spasi."));
             }
+        } else if (this.user == null){
+            sendToClient(new ChatNotification("Silakan menginput username anda dengan mengetik" +
+                    " '/username (spasi) (username anda)'."));
         } else if (request.toLowerCase().startsWith("/whisper")) {
             if (request.split(" ").length >= 3) {
                 String recipient = request.split(" ")[1];
@@ -65,23 +81,28 @@ public class  ConnectionHandler {
                 if (map.containsKey(recipient)) {
                     whisperMessage(new WhisperMessage(this.user.getUsername(), whisperMessage), recipient);
                     sendToClient(new SendWhisper(recipient, whisperMessage));
-                } else sendToClient(new ChatNotification("User " + recipient + " doesn't exist."));
+                } else sendToClient(new ChatNotification("User " + recipient + " tidak ditemukan."));
             } else {
-                sendToClient(new ChatNotification("Whisper command invalid, please send whisper by typing " +
-                        "'/whisper (space) (user you want to send whisper) (space) (message)'."));
+                sendToClient(new ChatNotification("Whisper command gagal, silakan mengirim whisper dengan mengetik " +
+                        "'/whisper (spasi) (user yang ingin diwhisper) (spasi) (pesan)'."));
             }
-        } else if (this.user == null){
-            sendToClient(new ChatNotification("Please input your username by typing" +
-                    " '/username (space) (your username)'."));
         } else if (request.toLowerCase().equals("/logout") || request.toLowerCase().equals("/quit")){
+            broadcastMessage(new ChatMessage(this.user.getUsername(), request));
             logout();
             if (request.toLowerCase().equals("/quit")) {
-                sendToClient(new ChatNotification("You have left the chat room."));
+                sendToClient(new ChatNotification("Kamu telah meninggalkan chat room."));
             }
+        } else if (request.toLowerCase().equals("/score")){
+            broadcastMessage(new ChatMessage(this.user.getUsername(), request));
+            vertx.eventBus().send("requestScore", "");
+        } else if (request.toLowerCase().equals("/question")){
+            broadcastMessage(new ChatMessage(this.user.getUsername(), request));
+            vertx.eventBus().send("requestQuestion", "");
         } else {
             broadcastMessage(new ChatMessage(this.user.getUsername(), request));
 //            Message<String> test = this.user.getUsername();
-            vertx.eventBus().send("answer", request);
+            this.user.setMessage(request);
+            vertx.eventBus().send("answer", this.user, options);
         }
     }
 
@@ -117,9 +138,9 @@ public class  ConnectionHandler {
 
             // broadcast login
             broadcastMessage(new LoginNotification(this.user));
-            sendToClient(new ChatNotification("Your username is " + this.user.getUsername() + ", now you can start chatting!"));
+            sendToClient(new ChatNotification("Username anda adalah " + this.user.getUsername() + ", anda sudah bisa mulai chatting!"));
         } else {
-            sendToClient(new ChatNotification("Username already taken, please input another username"));
+            sendToClient(new ChatNotification("Username telah terambil, silakan menginput username lain"));
         }
     }
 
