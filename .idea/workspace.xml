@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54b2010-d425-460d-aae8-d17bce2999d7" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessageCodec.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionVerticle.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionVerticle.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/Main.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Home.html" afterPath="$PROJECT_DIR$/src/main/resources/Home.html" />
       <change beforePath="$PROJECT_DIR$/target/classes/Home.html" afterPath="$PROJECT_DIR$/target/classes/Home.html" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/BotVerticle.class" afterPath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/BotVerticle.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/ConnectionHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/ConnectionHandler.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/model/User.class" afterPath="$PROJECT_DIR$/target/classes/com/gigabyte/tugasakhir/vertx/model/User.class" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,10 +15,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BotVerticle.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BotVerticle.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
+            <state relative-caret-position="507">
               <caret line="122" column="22" lean-forward="false" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -41,7 +29,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionHandler.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConnectionHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="900">
@@ -494,7 +482,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4232489" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4232489" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -912,18 +900,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="122" column="22" lean-forward="false" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
-            <element signature="e#2963#2964#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -932,6 +908,18 @@
             <element signature="imports" expanded="true" />
             <element signature="e#5517#5518#0" expanded="true" />
             <element signature="e#5585#5586#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="122" column="22" lean-forward="false" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2931#2932#0" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
           </folding>
         </state>
       </provider>
