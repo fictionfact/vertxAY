@@ -14,7 +14,10 @@ Cara kerja :
 4. masukkan "/logout" pada textbox untuk melakukan logout
 5. masukkan "/help" untuk detail akan command-command yang ada
 
-Dalam sistem chat room ini, akan ada sebuah bot yang menanyakan beberapa buah pertanyaan, pengguna dapat menjawab pertanyaan bot dengan memasukkan jawaban pada chat. 
-Pengguna yang menjawab pertanyaan dengan benar akan mendapat +10 poin. 
-Untuk mengulang pertanyaan yang diberikan bot, masukkan "/question". 
+Dalam sistem chat room ini, akan ada sebuah bot yang menanyakan beberapa buah pertanyaan, pengguna dapat menjawab pertanyaan bot dengan memasukkan jawaban pada chat.
+
+Pengguna yang menjawab pertanyaan dengan benar akan mendapat +10 poin.
+
+Untuk mengulang pertanyaan yang diberikan bot, masukkan "/question".
+
 Untuk menampilkan pengguna-pengguna dengan poin masing-masing, masukkan "/score".
