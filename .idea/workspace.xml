@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e54b2010-d425-460d-aae8-d17bce2999d7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/target/classes/Home.html" afterPath="$PROJECT_DIR$/target/classes/Home.html" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/QnA.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Home.html" afterPath="$PROJECT_DIR$/src/main/resources/Home.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,12 +22,45 @@
       <file leaf-file-name="BotVerticle.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="122" column="22" lean-forward="false" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+            <state relative-caret-position="238">
+              <caret line="86" column="141" lean-forward="false" selection-start-line="86" selection-start-column="141" selection-end-line="86" selection-end-column="141" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2931#2932#0" expanded="true" />
-                <element signature="e#2963#2964#0" expanded="true" />
+                <element signature="e#3309#3310#0" expanded="true" />
+                <element signature="e#3341#3342#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="QnA.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/QnA.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-431">
+              <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="4" selection-end-column="42" />
+              <folding>
+                <element signature="e#432#433#0" expanded="true" />
+                <element signature="e#472#473#0" expanded="true" />
+                <element signature="e#567#568#0" expanded="true" />
+                <element signature="e#595#596#0" expanded="true" />
+                <element signature="e#634#635#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+                <element signature="e#703#704#0" expanded="true" />
+                <element signature="e#733#734#0" expanded="true" />
+                <element signature="e#779#780#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -32,12 +69,12 @@
       <file leaf-file-name="ConnectionHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="140" column="111" lean-forward="false" selection-start-line="140" selection-start-column="111" selection-end-line="140" selection-end-column="111" />
+            <state relative-caret-position="425">
+              <caret line="133" column="8" lean-forward="false" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5517#5518#0" expanded="true" />
-                <element signature="e#5585#5586#0" expanded="true" />
+                <element signature="e#5945#5946#0" expanded="true" />
+                <element signature="e#6013#6014#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,7 +83,7 @@
       <file leaf-file-name="userMessageCodec.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessageCodec.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
+            <state relative-caret-position="594">
               <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -89,32 +126,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-              <folding>
-                <element signature="e#432#433#0" expanded="true" />
-                <element signature="e#472#473#0" expanded="true" />
-                <element signature="e#567#568#0" expanded="true" />
-                <element signature="e#595#596#0" expanded="true" />
-                <element signature="e#634#635#0" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#703#704#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#779#780#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/Home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="309" column="30" lean-forward="false" selection-start-line="309" selection-start-column="30" selection-end-line="309" selection-end-column="30" />
+            <state relative-caret-position="1775">
+              <caret line="211" column="179" lean-forward="false" selection-start-line="211" selection-start-column="179" selection-end-line="211" selection-end-column="179" />
               <folding />
             </state>
           </provider>
@@ -137,6 +153,7 @@
       <find>Your username is</find>
       <find>logout</find>
       <find>&quot;broad</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,9 +201,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessageCodec.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/QnA.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Home.html" />
         <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java" />
       </list>
     </option>
   </component>
@@ -196,7 +214,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6" fullScreen="true">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="16" />
     <option name="y" value="-23" />
     <option name="width" value="1346" />
@@ -236,6 +254,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -308,13 +329,10 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../vertxAY-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
     <property name="project.structure.last.edited" value="Project" />
@@ -469,8 +487,7 @@
     <option name="totallyTimeSpent" value="16828000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1366" height="768" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -482,12 +499,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32911393" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4232489" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48464164" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28517398" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28971255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -546,14 +563,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionVerticle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -595,8 +604,8 @@
           <caret line="40" column="5" lean-forward="false" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5517#5518#0" expanded="true" />
-            <element signature="e#5585#5586#0" expanded="true" />
+            <element signature="e#5945#5946#0" expanded="true" />
+            <element signature="e#6013#6014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -650,8 +659,8 @@
           <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5517#5518#0" expanded="true" />
-            <element signature="e#5585#5586#0" expanded="true" />
+            <element signature="e#5945#5946#0" expanded="true" />
+            <element signature="e#6013#6014#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -809,33 +818,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessage.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="53" column="18" lean-forward="false" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
-          <folding>
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#472#473#0" expanded="true" />
-            <element signature="e#567#568#0" expanded="true" />
-            <element signature="e#595#596#0" expanded="true" />
-            <element signature="e#634#635#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#779#780#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessage.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/packet/ChatMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
@@ -862,21 +845,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/Home.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionVerticle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="309" column="30" lean-forward="false" selection-start-line="309" selection-start-column="30" selection-end-line="309" selection-end-column="30" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessageCodec.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -892,34 +865,73 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionVerticle.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="-431">
+          <caret line="3" column="53" lean-forward="false" selection-start-line="3" selection-start-column="53" selection-end-line="4" selection-end-column="42" />
+          <folding>
+            <element signature="e#432#433#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#567#568#0" expanded="true" />
+            <element signature="e#595#596#0" expanded="true" />
+            <element signature="e#634#635#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="true" />
+            <element signature="e#733#734#0" expanded="true" />
+            <element signature="e#779#780#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/model/QnA.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="141" column="24" lean-forward="false" selection-start-line="141" selection-start-column="24" selection-end-line="141" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/codec/userMessageCodec.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/Home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1775">
+          <caret line="211" column="179" lean-forward="false" selection-start-line="211" selection-start-column="179" selection-end-line="211" selection-end-column="179" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/ConnectionHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="140" column="111" lean-forward="false" selection-start-line="140" selection-start-column="111" selection-end-line="140" selection-end-column="111" />
+        <state relative-caret-position="425">
+          <caret line="133" column="8" lean-forward="false" selection-start-line="133" selection-start-column="8" selection-end-line="133" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5517#5518#0" expanded="true" />
-            <element signature="e#5585#5586#0" expanded="true" />
+            <element signature="e#5945#5946#0" expanded="true" />
+            <element signature="e#6013#6014#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/gigabyte/tugasakhir/vertx/BotVerticle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="122" column="22" lean-forward="false" selection-start-line="122" selection-start-column="22" selection-end-line="122" selection-end-column="22" />
+        <state relative-caret-position="238">
+          <caret line="86" column="141" lean-forward="false" selection-start-line="86" selection-start-column="141" selection-end-line="86" selection-end-column="141" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2931#2932#0" expanded="true" />
-            <element signature="e#2963#2964#0" expanded="true" />
+            <element signature="e#3309#3310#0" expanded="true" />
+            <element signature="e#3341#3342#0" expanded="true" />
           </folding>
         </state>
       </provider>

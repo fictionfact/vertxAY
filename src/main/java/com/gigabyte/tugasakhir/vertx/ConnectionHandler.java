@@ -21,6 +21,10 @@ public class  ConnectionHandler {
     private final Vertx vertx;
     private final ServerWebSocket socket;
     private User user;
+    private String help = "/whisper (spasi) (username) : command untuk whisper ke user lain.<br>" +
+            "/logout : command untuk logout dari chatroom.<br>" +
+            "/question : command untuk mengulang pertanyaan dari bot.<br>" +
+            "/score : command untuk menampilkan score dari tiap user.";
     private DeliveryOptions options;
     public ConnectionHandler(Vertx vertx, ServerWebSocket socket) {
         this.vertx = vertx;
@@ -73,6 +77,8 @@ public class  ConnectionHandler {
         } else if (this.user == null){
             sendToClient(new ChatNotification("Silakan menginput username anda dengan mengetik" +
                     " '/username (spasi) (username anda)'."));
+        } else if (request.toLowerCase().equals("/help")){
+            sendToClient(new ChatNotification(help));
         } else if (request.toLowerCase().startsWith("/whisper")) {
             if (request.split(" ").length >= 3) {
                 String recipient = request.split(" ")[1];
@@ -138,7 +144,8 @@ public class  ConnectionHandler {
 
             // broadcast login
             broadcastMessage(new LoginNotification(this.user));
-            sendToClient(new ChatNotification("Username anda adalah " + this.user.getUsername() + ", anda sudah bisa mulai chatting!"));
+            sendToClient(new ChatNotification("Username anda adalah " + this.user.getUsername() + ", anda sudah bisa mulai chatting! " +
+                    "Untuk bantuan, silakan menginput command /help."));
         } else {
             sendToClient(new ChatNotification("Username telah terambil, silakan menginput username lain"));
         }

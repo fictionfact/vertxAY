@@ -209,7 +209,7 @@
             p.style.backgroundColor = '#3C6478';
             p.style.fontSize = '18px';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -228,7 +228,7 @@
             p.style.fontSize = '18px';
             p.style.backgroundColor = '#3C6478';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -246,7 +246,7 @@
             p.style.whiteSpace = 'pre';
             p.style.fontSize = '18px';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -281,7 +281,7 @@
             console.log(chatList.scrollTop);
             console.log(chatList.scrollHeight);
             console.log(chatList.clientHeight);
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight+1){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -304,6 +304,7 @@
             var input = document.getElementById("input");
             input.value = "";
             socket.send(text);
+            chatList.scrollTop = chatList.scrollHeight;
         }
 
         document.getElementById('input').addEventListener('keydown', function(ev){

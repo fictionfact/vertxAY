@@ -209,7 +209,7 @@
             p.style.backgroundColor = '#3C6478';
             p.style.fontSize = '18px';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -228,7 +228,7 @@
             p.style.fontSize = '18px';
             p.style.backgroundColor = '#3C6478';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -238,6 +238,7 @@
         }
 
         function chatMessage(json){
+            console.log(json);
             var sender = json.from;
             var message = json.chatMessage;
             var compiled = sender + ' : ' + message;
@@ -246,7 +247,7 @@
             p.style.whiteSpace = 'pre';
             p.style.fontSize = '18px';
             p.innerHTML = compiled;
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
@@ -267,6 +268,8 @@
             var username = json.user.username;
             var x = document.querySelectorAll('p[username]');
             for (var i = 0; i < x.length; i++){
+                console.log(x[i].getAttribute('username'));
+                console.log(username);
                 if(x[i].getAttribute('username') == username){
                     x[i].remove();
                 }
@@ -274,6 +277,7 @@
         }
 
         function chatNotif(json){
+            console.log(json);
             var p = document.createElement('p');
             p.innerHTML = '<b>' + json.notification + '</b>';
             p.style.color = '#ff6e00';
@@ -281,7 +285,7 @@
             console.log(chatList.scrollTop);
             console.log(chatList.scrollHeight);
             console.log(chatList.clientHeight);
-            if (Math.ceil(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1 || Math.floor(chatList.scrollTop)+chatList.clientHeight == chatList.scrollHeight+1){
+            if (chatList.scrollTop+chatList.clientHeight == chatList.scrollHeight){
                 console.log('masuk kok');
                 chatList.appendChild(p);
                 chatList.scrollTop = chatList.scrollHeight;
